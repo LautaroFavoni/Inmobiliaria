@@ -17,4 +17,37 @@ public class PaymentDetailsForResponse {
         this.validada = payment.isValidada();
         this.amount = payment.getAmount();
     }
+
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isValidada() {
+        return validada;
+    }
+
+    public void setValidada(boolean validada) {
+        this.validada = validada;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 }

@@ -31,6 +31,9 @@ public class Event {
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Imagen> imagenes;  // Lista de imágenes asociadas al evento
 
+    public Event() {
+    }
+
     // Getters y Setters
     public Long getId() {
         return id;

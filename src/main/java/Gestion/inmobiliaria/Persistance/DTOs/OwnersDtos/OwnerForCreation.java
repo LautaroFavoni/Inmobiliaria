@@ -1,4 +1,4 @@
-package Gestion.inmobiliaria.Persistance.DTOs;
+package Gestion.inmobiliaria.Persistance.DTOs.OwnersDtos;
 
 
 

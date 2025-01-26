@@ -20,7 +20,7 @@ public class AdminForCreation {
         return lastname;
     }
 
-    public void setlastname(String lastname) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 

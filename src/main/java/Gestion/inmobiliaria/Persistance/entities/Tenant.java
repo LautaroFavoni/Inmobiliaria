@@ -1,20 +1,23 @@
 package Gestion.inmobiliaria.Persistance.entities;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 public class Tenant extends User {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "property_id")  // Define la clave foránea en la tabla Property
-    private Property property;
+
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Property> properties;
 
     // Getters and Setters
-    public Property getProperty() {
-        return property;
+    public List<Property> getProperties() {
+        return properties;
     }
 
-    public void setProperty(Property property) {
-        this.property = property;
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
     }
 }
+

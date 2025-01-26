@@ -14,6 +14,7 @@ public abstract class User implements Serializable {
     private Long id;
 
     private String name;
+
     private String lastname;
     @Column(unique = true)
     private String dni;
@@ -39,14 +40,6 @@ public abstract class User implements Serializable {
         this.name = name;
     }
 
-    public String getlastname() {
-        return lastname;
-    }
-
-    public void setlastname(String lastname) {
-        this.lastname = lastname;
-    }
-
     public String getDni() {
         return dni;
     }
@@ -69,6 +62,14 @@ public abstract class User implements Serializable {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getRole() {
