@@ -6,6 +6,10 @@ import Gestion.inmobiliaria.Persistance.DTOs.TenantsDTOs.TenantForResponse;
 import Gestion.inmobiliaria.Persistance.entities.Contract;
 import Gestion.inmobiliaria.Persistance.entities.Payment;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ContractForResponse {
 
         private Long id;
@@ -14,14 +18,21 @@ public class ContractForResponse {
         private TenantForResponse tenant;
         private ContractDetailsForResponseDTO contractDetailsForResponseDTO;
 
-        // Constructor, getters y setters
+        private List<ImagenForResponse> imagenes; // Lista de imágenes asociadas
+
+
+    // Constructor, getters y setters
         public ContractForResponse(Contract contract) {
             this.id = contract.getId();
             this.owner = new OwnerForResponse(contract.getOwner());
             this.property = new PropertyForResponse(contract.getProperty());
             this.tenant = new TenantForResponse(contract.getTenant());
             this.contractDetailsForResponseDTO = new ContractDetailsForResponseDTO(contract);
+            this.imagenes = contract.getImagenes() != null
+                    ? contract.getImagenes().stream().map(ImagenForResponse::new).collect(Collectors.toList())
+                    : new ArrayList<>();  // Si es null, inicializa una lista vacía
         }
+
 
         public Long getId() {
             return id;
@@ -56,6 +67,15 @@ public class ContractForResponse {
         }
 
          public ContractDetailsForResponseDTO getContractDetailsForResponseDTO() {return contractDetailsForResponseDTO;
+    }
+
+
+    public List<ImagenForResponse> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<ImagenForResponse> imagenes) {
+        this.imagenes = imagenes;
     }
 
     public void setContractDetailsForResponseDTO(ContractDetailsForResponseDTO contractDetailsForResponseDTO) {

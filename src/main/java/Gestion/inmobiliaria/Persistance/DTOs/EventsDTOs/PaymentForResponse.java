@@ -5,6 +5,7 @@ import Gestion.inmobiliaria.Persistance.DTOs.PropertiesDTOs.PropertyForResponse;
 import Gestion.inmobiliaria.Persistance.DTOs.TenantsDTOs.TenantForResponse;
 import Gestion.inmobiliaria.Persistance.entities.Payment;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,11 +26,11 @@ public class PaymentForResponse {
         this.tenant = new TenantForResponse(payment.getTenant());
         this.paymentDetails = new PaymentDetailsForResponse(payment);
         // Convertir las imágenes a DTOs
-        this.imagenes = payment.getImagenes()
-                .stream()
-                .map(ImagenForResponse::new)
-                .collect(Collectors.toList());
+        this.imagenes = payment.getImagenes() != null
+                ? payment.getImagenes().stream().map(ImagenForResponse::new).collect(Collectors.toList())
+                : new ArrayList<>();  // Si es null, inicializa una lista vacía
     }
+
 
 
     public Long getId() {

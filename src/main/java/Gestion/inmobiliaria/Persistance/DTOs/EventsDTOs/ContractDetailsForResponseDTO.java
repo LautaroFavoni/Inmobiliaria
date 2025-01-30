@@ -5,52 +5,65 @@ import Gestion.inmobiliaria.Persistance.entities.Payment;
 
 import java.util.Date;
 
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+
 public class ContractDetailsForResponseDTO {
 
-        private Date date;
-        private String description;
-        private boolean validada;
-        private Date endDate;
+    private Date date;
+    private String description;
+    private boolean validada;
+    private Date endDate;
+    private List<LocalDate> increaseDates; // Lista de fechas de aumento
 
-    // Constructor, getters y setters
-        public ContractDetailsForResponseDTO(Contract contract) {
-            this.date = contract.getDate();
-            this.description = contract.getDescripcion();
-            this.validada = contract.isValidada();
-            this.endDate = contract.getEndDate();
-        }
+    // Constructor
+    public ContractDetailsForResponseDTO(Contract contract) {
+        this.date = contract.getDate();
+        this.description = contract.getDescripcion();
+        this.validada = contract.isValidada();
+        this.endDate = contract.getEndDate();
+        this.increaseDates = contract.getIncreaseDates(); // Obtener fechas de aumento
+    }
 
+    // Getters y Setters
+    public Date getDate() {
+        return date;
+    }
 
-        public Date getDate() {
-            return date;
-        }
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-        public void setDate(Date date) {
-            this.date = date;
-        }
+    public String getDescription() {
+        return description;
+    }
 
-        public String getDescription() {
-            return description;
-        }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
+    public boolean isValidada() {
+        return validada;
+    }
 
-        public boolean isValidada() {
-            return validada;
-        }
+    public void setValidada(boolean validada) {
+        this.validada = validada;
+    }
 
-        public void setValidada(boolean validada) {
-            this.validada = validada;
-        }
-
-    // Getters and Setters
-          public Date getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-         public void setEndDate(Date endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+    public List<LocalDate> getIncreaseDates() {
+        return increaseDates;
     }
+
+    public void setIncreaseDates(List<LocalDate> increaseDates) {
+        this.increaseDates = increaseDates;
+    }
+}

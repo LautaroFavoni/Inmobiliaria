@@ -18,12 +18,12 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/create")
-    public ResponseEntity<PaymentForResponse> createPayment(@RequestBody PaymentDTO paymentDTO) {
+    public ResponseEntity<?> createPayment(@RequestBody PaymentDTO paymentDTO) {
         try {
             PaymentForResponse createdPayment = paymentService.createPayment(paymentDTO);
             return new ResponseEntity<>(createdPayment, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body("Error " + e.getMessage());
         }
     }
 
