@@ -21,6 +21,9 @@ public class PaymentController {
     public ResponseEntity<?> createPayment(@RequestBody PaymentDTO paymentDTO) {
         try {
             PaymentForResponse createdPayment = paymentService.createPayment(paymentDTO);
+
+
+
             return new ResponseEntity<>(createdPayment, HttpStatus.CREATED);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error " + e.getMessage());

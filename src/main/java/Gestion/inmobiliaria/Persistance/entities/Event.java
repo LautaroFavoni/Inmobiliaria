@@ -1,5 +1,7 @@
 package Gestion.inmobiliaria.Persistance.entities;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class Event {
     @JoinColumn(name = "property_id")
     private Property property;  // Relación con Property
 
-    private Date date;  // Fecha del evento
+    private LocalDateTime date;  // Fecha del evento
 
     private String descripcion;  // Descripción del evento
 
@@ -67,11 +69,11 @@ public class Event {
         this.property = property;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

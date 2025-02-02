@@ -8,16 +8,13 @@ public class ImagenForResponse {
     private Long id;
     private String tipo;
     private double tamaño;
-
-    private String datos; // Campo para los datos codificados en Base64
-
+    private String ruta; // Ahora solo guardamos la ruta
 
     public ImagenForResponse(Imagen imagen) {
         this.id = imagen.getId();
         this.tipo = imagen.getTipo();
         this.tamaño = imagen.getTamaño();
-        this.datos = Base64.getEncoder().encodeToString(imagen.getDatos()); // Codificar los datos
-
+        this.ruta = imagen.getRuta(); // Solo devolvemos la ruta
     }
 
     // Getters y Setters
@@ -45,11 +42,11 @@ public class ImagenForResponse {
         this.tamaño = tamaño;
     }
 
-    public String getDatos() {
-        return datos;
+    public String getRuta() {
+        return ruta;
     }
 
-    public void setDatos(String datos) {
-        this.datos = datos;
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 }

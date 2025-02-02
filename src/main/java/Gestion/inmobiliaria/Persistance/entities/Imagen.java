@@ -9,8 +9,7 @@ public class Imagen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Lob
-    private byte[] datos;  // Datos de la imagen en formato BLOB
+    private String ruta;  // Ruta de la imagen en el servidor
 
     private String tipo;  // Tipo MIME (image/webp, image/png, etc.)
 
@@ -29,12 +28,12 @@ public class Imagen {
         this.id = id;
     }
 
-    public byte[] getDatos() {
-        return datos;
+    public String getRuta() {
+        return ruta;
     }
 
-    public void setDatos(byte[] datos) {
-        this.datos = datos;
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 
     public String getTipo() {

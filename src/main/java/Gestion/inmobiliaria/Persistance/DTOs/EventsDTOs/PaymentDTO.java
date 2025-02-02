@@ -1,12 +1,16 @@
 package Gestion.inmobiliaria.Persistance.DTOs.EventsDTOs;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class PaymentDTO extends EventDTO {
 
-    private Date date;
+    private LocalDateTime date;
     private String description;
     private boolean validada;
+
+    private Double gastoBancario;
+    private String gastoBancarioDescripcion;
+
 
     private Double litoralGas;
     private String litoralGasDescripcion;
@@ -38,6 +42,7 @@ public class PaymentDTO extends EventDTO {
 
     private Double sellados;
     private String selladosDescripcion;
+
 
     private Double actualizacionDeposito;
     private String actualizacionDepositoDescripcion;
@@ -261,12 +266,11 @@ public class PaymentDTO extends EventDTO {
     }
 
     @Override
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    @Override
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -302,6 +306,22 @@ public class PaymentDTO extends EventDTO {
 
     public void setLitoralGasDescripcion(String litoralGasDescripcion) {
         this.litoralGasDescripcion = litoralGasDescripcion;
+    }
+
+    public Double getGastoBancario() {
+        return gastoBancario;
+    }
+
+    public void setGastoBancario(Double gastoBancario) {
+        this.gastoBancario = gastoBancario;
+    }
+
+    public String getGastoBancarioDescripcion() {
+        return gastoBancarioDescripcion;
+    }
+
+    public void setGastoBancarioDescripcion(String gastoBancarioDescripcion) {
+        this.gastoBancarioDescripcion = gastoBancarioDescripcion;
     }
 }
 

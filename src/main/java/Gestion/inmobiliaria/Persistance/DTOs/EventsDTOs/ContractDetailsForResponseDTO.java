@@ -3,6 +3,7 @@ package Gestion.inmobiliaria.Persistance.DTOs.EventsDTOs;
 import Gestion.inmobiliaria.Persistance.entities.Contract;
 import Gestion.inmobiliaria.Persistance.entities.Payment;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import java.time.LocalDate;
@@ -11,10 +12,10 @@ import java.util.List;
 
 public class ContractDetailsForResponseDTO {
 
-    private Date date;
+    private LocalDateTime date;
     private String description;
     private boolean validada;
-    private Date endDate;
+    private LocalDateTime endDate;
     private List<LocalDate> increaseDates; // Lista de fechas de aumento
 
     // Constructor
@@ -27,11 +28,11 @@ public class ContractDetailsForResponseDTO {
     }
 
     // Getters y Setters
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -51,11 +52,11 @@ public class ContractDetailsForResponseDTO {
         this.validada = validada;
     }
 
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 

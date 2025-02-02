@@ -1,11 +1,16 @@
 package Gestion.inmobiliaria.Persistance.DTOs.EventsDTOs;
 
 import Gestion.inmobiliaria.Persistance.entities.Payment;
+import Gestion.inmobiliaria.Persistance.enums.PaymentStatus;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class PaymentDetailsForResponse {
-    private Date date;
+    private LocalDateTime date;
     private String description;
     private boolean validada;
 
@@ -25,8 +30,15 @@ public class PaymentDetailsForResponse {
     private double otros;
     private double total; // Suma de todos menos aFavor
 
+    @Enumerated(EnumType.STRING) // Guarda el estado como una cadena en la base de datos
+    private PaymentStatus status;
+
     private Double litoralGas;
     private String litoralGasDescripcion;
+
+    private Double gastoBancario;
+    private String gastoBancarioDescripcion;
+
 
     // Descripciones
     private String alquilerDescripcion;
@@ -45,6 +57,8 @@ public class PaymentDetailsForResponse {
 
     // Constructor, getters y setters
     public PaymentDetailsForResponse(Payment payment) {
+        this.gastoBancario = payment.getGastoBancario();
+        this.gastoBancarioDescripcion = payment.getGastoBancarioDescripcion();
         this.litoralGas = payment.getLitoralGas();
         this.litoralGasDescripcion = payment.getLitoralGasDescripcion();
         this.date = payment.getDate();
@@ -64,6 +78,7 @@ public class PaymentDetailsForResponse {
         this.aFavor = payment.getaFavor();
         this.otros = payment.getOtros();
         this.total = calcularTotal();
+        this.status = payment.getStatus();
 
         this.alquilerDescripcion = payment.getAlquilerDescripcion();
         this.expensasDescripcion = payment.getExpensasDescripcion();
@@ -82,7 +97,7 @@ public class PaymentDetailsForResponse {
 
     private double calcularTotal() {
         return alquiler + expensas + tgi + api + agua + epe + litoralGas +
-                seguro + honorarios + sellados + actualizacionDeposito +
+                seguro + honorarios + sellados + actualizacionDeposito + gastoBancario+
                 deuda + otros - aFavor;
     }
 
@@ -154,11 +169,11 @@ public class PaymentDetailsForResponse {
 
     public double getTotal() { return total; }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -192,5 +207,29 @@ public class PaymentDetailsForResponse {
 
     public void setLitoralGasDescripcion(String litoralGasDescripcion) {
         this.litoralGasDescripcion = litoralGasDescripcion;
+    }
+
+    public Double getGastoBancario() {
+        return gastoBancario;
+    }
+
+    public void setGastoBancario(Double gastoBancario) {
+        this.gastoBancario = gastoBancario;
+    }
+
+    public String getGastoBancarioDescripcion() {
+        return gastoBancarioDescripcion;
+    }
+
+    public void setGastoBancarioDescripcion(String gastoBancarioDescripcion) {
+        this.gastoBancarioDescripcion = gastoBancarioDescripcion;
+    }
+
+    public PaymentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(PaymentStatus status) {
+        this.status = status;
     }
 }

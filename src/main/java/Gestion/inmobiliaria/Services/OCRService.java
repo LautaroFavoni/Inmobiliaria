@@ -17,7 +17,6 @@ public class OCRService {
         Tesseract tesseract = new Tesseract();
         tesseract.setDatapath(tessDataPath); // Especifica la ruta de los archivos de idioma
         tesseract.setLanguage("spa"); // Usar "spa" para español
-
         try {
             File imageFile = new File(imagePath);
             return tesseract.doOCR(imageFile);

@@ -4,5 +4,6 @@ public enum PaymentStatus {
     PENDIENTE_DE_PAGO,      // El pago aún no se ha realizado
     PENDIENTE_DE_APROBACION, // El pago se realizó, pero el comprobante está en revisión
     RECHAZADO,              // El comprobante fue rechazado
+    PENDIENTE_DE_VALIDACION_MANUAL,
     APROBADO                // El comprobante fue aprobado y el pago está completo
 }

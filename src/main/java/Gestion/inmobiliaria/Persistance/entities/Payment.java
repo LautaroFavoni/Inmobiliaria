@@ -1,7 +1,10 @@
 package Gestion.inmobiliaria.Persistance.entities;
 
 
+import Gestion.inmobiliaria.Persistance.enums.PaymentStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -18,6 +21,12 @@ public class Payment extends Event {
 
         private Double litoralGas;
         private String litoralGasDescripcion;
+
+        private Double gastoBancario;
+        private String gastoBancarioDescripcion;
+
+        @Enumerated(EnumType.STRING) // Guarda el estado como una cadena en la base de datos
+        private PaymentStatus status;
 
         private Double api;
         private String apiDescripcion;
@@ -57,6 +66,7 @@ public class Payment extends Event {
             return (alquiler != null ? alquiler : 0) +
                     (expensas != null ? expensas : 0) +
                     (litoralGas != null ? litoralGas : 0)+
+                    (gastoBancario != null ? gastoBancario : 0)+
                     (tgi != null ? tgi : 0) +
                     (api != null ? api : 0) +
                     (agua != null ? agua : 0) +
@@ -300,6 +310,30 @@ public class Payment extends Event {
 
         public void setEpeDescripcion(String epeDescripcion) {
                 this.epeDescripcion = epeDescripcion;
+        }
+
+        public Double getGastoBancario() {
+                return gastoBancario;
+        }
+
+        public void setGastoBancario(Double gastoBancario) {
+                this.gastoBancario = gastoBancario;
+        }
+
+        public String getGastoBancarioDescripcion() {
+                return gastoBancarioDescripcion;
+        }
+
+        public void setGastoBancarioDescripcion(String gastoBancarioDescripcion) {
+                this.gastoBancarioDescripcion = gastoBancarioDescripcion;
+        }
+
+        public PaymentStatus getStatus() {
+                return status;
+        }
+
+        public void setStatus(PaymentStatus status) {
+                this.status = status;
         }
 }
 

@@ -1,6 +1,7 @@
 package Gestion.inmobiliaria.Persistance.DTOs.EventsDTOs;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public abstract class EventDTO {
     private Long ownerId;
     private Long tenantId;
     private Long propertyId;
-    private Date date;
+    private LocalDateTime date;
     private String descripcion;
     private boolean validada;
     private List<Long> imagenes; // Usamos solo los IDs de las imágenes asociadas
@@ -48,12 +49,8 @@ public abstract class EventDTO {
         this.propertyId = propertyId;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getDescripcion() {
@@ -63,6 +60,7 @@ public abstract class EventDTO {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
 
     public boolean isValidada() {
         return validada;

@@ -1,20 +1,20 @@
 package Gestion.inmobiliaria.Persistance.DTOs.EventsDTOs;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ContractDTO extends EventDTO {
 
-    private Date endDate; // Fecha de finalización del contrato
+    private LocalDateTime endDate; // Fecha de finalización del contrato
     private List<LocalDate> increaseDates; // Lista de fechas de aumento
 
     // Getters and Setters
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
@@ -25,5 +25,7 @@ public class ContractDTO extends EventDTO {
     public void setIncreaseDates(List<LocalDate> increaseDates) {
         this.increaseDates = increaseDates;
     }
+
+
 }
 

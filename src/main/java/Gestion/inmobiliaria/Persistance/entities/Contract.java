@@ -3,6 +3,7 @@ package Gestion.inmobiliaria.Persistance.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 @Entity
 public class Contract extends Event {
 
-    private Date endDate;  // Fecha de finalización del contrato
+    private LocalDateTime endDate;  // Fecha de finalización del contrato
 
     @ElementCollection // Indica que la lista será almacenada como una colección embebida
     @CollectionTable(name = "contract_increase_dates", joinColumns = @JoinColumn(name = "contract_id"))
@@ -18,11 +19,11 @@ public class Contract extends Event {
     private List<LocalDate> increaseDates = new ArrayList<>(); // Lista de fechas de aumento
 
     // Getters and Setters
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
