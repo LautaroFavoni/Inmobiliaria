@@ -28,7 +28,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(authz -> authz
-                        .requestMatchers("/api/test", "/api/admin/create", "/api/auth/login").permitAll() // Rutas públicas
+                        .requestMatchers("/api/test", "/api/admin/create", "/api/auth/login",  "/v3/api-docs/**",  // Documentación en JSON
+                                "/swagger-ui/**",   // Recursos de Swagger
+                                "/swagger-ui.html"  ).permitAll() // Rutas públicas
                         .anyRequest().authenticated() // Rutas protegidas
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless
